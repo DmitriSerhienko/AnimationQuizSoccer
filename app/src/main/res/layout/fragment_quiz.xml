@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:checked="true"
-                    android:text="@{quizFragment.currentQuizItem.answer[0]}"
+                    android:text="@{quizFragment.currentQuizItem.answerList[0]}"
                     android:textSize="16sp" />
 
                 <RadioButton
@@ -91,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{quizFragment.currentQuizItem.answer[1]}"
+                    android:text="@{quizFragment.currentQuizItem.answerList[1]}"
                     android:textSize="16sp" />
 
                 <RadioButton
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{quizFragment.currentQuizItem.answer[2]}"
+                    android:text="@{quizFragment.currentQuizItem.answerList[2]}"
                     android:textSize="16sp" />
 
             </RadioGroup>
@@ -121,13 +121,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/ballImage" />
 
             <Button
-                android:id="@+id/btAnswear"
+                android:id="@+id/btPass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
-
                 android:layout_marginBottom="16dp"
                 android:text="Pass!"
                 android:textColor="@color/white"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.animationkotlin.databinding.FragmentQuizBinding
 
 
@@ -57,16 +58,46 @@ class QuizFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentQuizBinding>(inflater,R.layout.fragment_quiz, container, false)
         getRandomQuizItem()
         binding.quizFragment = this
+        binding.btPass.setOnClickListener { view: View ->
+            val selectedCheckBox = binding.quizRadioGroup.checkedRadioButtonId
+            if(selectedCheckBox != -1) {
+                var answerIndex = 0
+                when (selectedCheckBox){
+                    R.id.firstRadioButton -> answerIndex = 0
+                    R.id.secondRadioButton -> answerIndex = 1
+                    R.id.thirdRadioButton -> answerIndex = 2
+                }
+                if(answers[answerIndex] == currentQuizItem.answerList[0]){
+                    quizItemIndex++
+                    if(quizItemIndex < numberOfQuestions){
+                        setQuizItem()
+                        binding.invalidateAll()
+                    } else {
+                        // Go to Goal Frag
+                        view.findNavController().navigate(R.id.action_quizFragment_to_goalFragment)
+                    }
+                } else {
+                    // Go to Miss Frag
+                    view.findNavController().navigate(R.id.action_quizFragment_to_missFragment)
+                }
+            }
+
+        }
+
         return binding.root
 
     }
 
     private fun getRandomQuizItem(){
         quizItems.shuffle()
-        currentQuizItem = quizItems[quizItemIndex]
-        answers = currentQuizItem.answer.toMutableList()
-        answers.shuffle()
+        quizItemIndex = 0
+        setQuizItem()
+    }
 
+    private fun setQuizItem(){
+        currentQuizItem = quizItems[quizItemIndex]
+        answers = currentQuizItem.answerList.toMutableList()
+        answers.shuffle()
     }
 
 }
