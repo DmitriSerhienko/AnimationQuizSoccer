@@ -1,6 +1,7 @@
 package com.example.animationkotlin
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -73,12 +74,26 @@ class QuizFragment : Fragment() {
                         setQuizItem()
                         binding.invalidateAll()
                     } else {
+                        binding.ballImage.animate()
+                            .translationXBy(600f)
+                            .rotation(3600f)
+                            .duration = 2000
                         // Go to Goal Frag
-                        view.findNavController().navigate(R.id.action_quizFragment_to_goalFragment)
+                        Handler().postDelayed({
+                            view.findNavController().navigate(R.id.action_quizFragment_to_goalFragment)
+                        }, 2000)
+
                     }
                 } else {
+                    binding.ballImage.animate()
+                        .translationXBy(600f)
+                        .rotation(3600f)
+                        .duration = 2000
                     // Go to Miss Frag
-                    view.findNavController().navigate(R.id.action_quizFragment_to_missFragment)
+                    Handler().postDelayed({
+                        view.findNavController().navigate(R.id.action_quizFragment_to_missFragment)
+                    }, 2000)
+
                 }
             }
 
