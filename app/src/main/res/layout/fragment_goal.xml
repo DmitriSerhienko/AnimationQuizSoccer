@@ -33,13 +33,13 @@
             android:text="Goal!"
             android:textColor="@color/white"
             android:textSize="100sp"
-            app:layout_constraintBottom_toTopOf="@+id/oneMoreTime"
+            app:layout_constraintBottom_toTopOf="@+id/oneMoreTimeG"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/oneMoreTime"
+            android:id="@+id/oneMoreTimeG"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

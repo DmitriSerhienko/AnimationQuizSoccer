@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.example.animationkotlin.databinding.FragmentGoalBinding
 
 
 class GoalFragment : Fragment() {
@@ -14,7 +18,16 @@ class GoalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_goal, container, false)
+
+
+        val binding = DataBindingUtil.inflate<FragmentGoalBinding>(
+            inflater, R.layout.fragment_goal, container, false)
+
+        binding.oneMoreTimeG.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_goalFragment_to_quizFragment)
+        }
+        (activity as AppCompatActivity).supportActionBar?.title = "Soccer Qiuz"
+        return binding.root
     }
 
 }

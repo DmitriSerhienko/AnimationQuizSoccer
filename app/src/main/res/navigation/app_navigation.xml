@@ -20,19 +20,44 @@
         tools:layout="@layout/fragment_quiz" >
         <action
             android:id="@+id/action_quizFragment_to_goalFragment"
-            app:destination="@id/goalFragment" />
+            app:destination="@id/goalFragment"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_quizFragment_to_missFragment"
-            app:destination="@id/missFragment" />
+            app:destination="@id/missFragment"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/goalFragment"
         android:name="com.example.animationkotlin.GoalFragment"
         android:label="fragment_goal"
-        tools:layout="@layout/fragment_goal" />
+        tools:layout="@layout/fragment_goal" >
+        <action
+            android:id="@+id/action_goalFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:popUpTo="@id/welcomeScreenFrag2" />
+    </fragment>
     <fragment
         android:id="@+id/missFragment"
         android:name="com.example.animationkotlin.MissFragment"
         android:label="fragment_miss"
-        tools:layout="@layout/fragment_miss" />
+        tools:layout="@layout/fragment_miss" >
+        <action
+            android:id="@+id/action_missFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.example.animationkotlin.RulesFragment"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" />
+    <fragment
+        android:id="@+id/ballFragment"
+        android:name="com.example.animationkotlin.BallFragment"
+        android:label="fragment_ball"
+        tools:layout="@layout/fragment_ball" />
 </navigation>
